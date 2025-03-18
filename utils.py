@@ -30,7 +30,7 @@ def simulate_colorblindness(image, cb_type="deuteranopia", severity=1.0):
       filtered_im = simulator.simulate_cvd(im, cb_filters[cb_type], severity=severity)
       return Image.fromarray(filtered_im)
     elif cb_type == "grayscale":
-      image = image.convert('L')
+      image = image.convert('L').convert('RGB')
       return image
     else:
       raise ValueError(f"Unsupported colorblindness type: {cb_type}")
